@@ -2,6 +2,10 @@ use std::path::Path;
 use rusqlite::Connection;
 use log::{info, error};
 use crate::repository::Error::{ConnectionError, MigrationError, PathError};
+use crate::core;
+mod category;
+
+
 
 pub struct Repository {
     connection: Connection,

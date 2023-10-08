@@ -1,11 +1,11 @@
-struct Coordinates {
+pub struct Coordinates {
     /// from left to right direction
     pub x: f64,
     /// from top to bottom direction
     pub y: f64,
 }
 
-struct Link<Target, URL> {
+pub struct Link<Target, URL> {
     /// unique id
     pub id: Uuid,
     /// displayed name
@@ -16,7 +16,7 @@ struct Link<Target, URL> {
     pub link: URL,
 }
 
-struct Category<Image> {
+pub struct Category<Image> {
     /// unique id
     pub id: Uuid,
     /// displayed name
@@ -27,9 +27,9 @@ struct Category<Image> {
     pub icon: Image,
 }
 
-type CategoryLink<Image, URL> = Link<Category<Image>, URL>;
+pub type CategoryLink<Image, URL> = Link<Category<Image>, URL>;
 
-struct Group<Image> {
+pub struct Group<Image> {
     /// unique id
     pub id: Uuid,
     /// displayed name
@@ -40,9 +40,9 @@ struct Group<Image> {
     pub icon: Image,
 }
 
-type GroupLink<Image, URL> = Link<Group<Image>, URL>;
+pub type GroupLink<Image, URL> = Link<Group<Image>, URL>;
 
-struct Map<Image> {
+pub struct Map<Image> {
     /// unique id
     pub id: Uuid,
     /// displayed name
@@ -61,18 +61,18 @@ struct Map<Image> {
     pub image: Image,
 }
 
-struct Sight<Category> {
+pub struct Sight<Category> {
     /// unique id
     pub id: Uuid,
     /// Category
     pub category: Category,
 }
 
-enum DependenceKind {
+pub enum DependenceKind {
     NotAccessibleBeforeInteraction = 1
 }
 
-struct Dependence<Sight, Kind> {
+pub struct Dependence<Sight, Kind> {
     /// unique id
     pub id: Uuid,
     /// Sight
@@ -83,7 +83,7 @@ struct Dependence<Sight, Kind> {
     pub kind: Kind,
 }
 
-struct Location<Map, Sight> {
+pub struct Location<Map, Sight> {
     /// unique id
     pub id: Uuid,
     /// Map to which this location belongs
@@ -94,7 +94,7 @@ struct Location<Map, Sight> {
     pub position: Coordinates,
 }
 
-struct Observation<Image, Location> {
+pub struct Observation<Image, Location> {
     /// unique id
     pub id: Uuid,
     /// Location to which this Observation belongs
