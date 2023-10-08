@@ -5,7 +5,7 @@ struct Coordinates {
     pub y: f64,
 }
 
-struct Link<Target, Link> {
+struct Link<Target, URL> {
     /// unique id
     pub id: Uuid,
     /// displayed name
@@ -13,7 +13,7 @@ struct Link<Target, Link> {
     /// a target is to which this link belongs
     pub target: Target,
     /// slice of urls to web resources with information
-    pub link: Link,
+    pub link: URL,
 }
 
 struct Category<Image> {
@@ -27,7 +27,7 @@ struct Category<Image> {
     pub icon: Image,
 }
 
-type CategoryLink<Image, Link> = Link<Category<Image>, Link>;
+type CategoryLink<Image, URL> = Link<Category<Image>, URL>;
 
 struct Group<Image> {
     /// unique id
@@ -40,8 +40,7 @@ struct Group<Image> {
     pub icon: Image,
 }
 
-type GroupLink<Image, Link> = Link<Group<Image>, Link>;
-
+type GroupLink<Image, URL> = Link<Group<Image>, URL>;
 
 struct Map<Image> {
     /// unique id
@@ -81,7 +80,7 @@ struct Dependence<Sight, Kind> {
     /// that depends on other Sight
     pub depends_on: Sight,
     /// kind of dependence
-    pub kind: Kind
+    pub kind: Kind,
 }
 
 struct Location<Map, Sight> {
@@ -105,9 +104,8 @@ struct Observation<Image, Location> {
 }
 
 use uuid::Uuid;
-use url::Url;
-use webp::WebPImage;
-use std::collections::HashMap;
+
+
 
 
 

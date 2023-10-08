@@ -28,8 +28,19 @@ console_error_panic_hook = { version = "0.1.6", optional = true }
 # Unfortunately, `wee_alloc` requires nightly Rust when targeting wasm for now.
 wee_alloc = { version = "0.4.5", optional = true }
 url = "2.4.1"
-webp = "0.2.6"
-sqlite3 = "0.24.0"
+libwebp-sys = { version = "0.9", features = ["avx2", "sse41", "neon"] }
+# `bundled` causes us to automatically compile and link in an up to date
+# version of SQLite for you. This avoids many common build issues, and
+# avoids depending on the version of SQLite on the users system (or your
+# system), which may be old or missing. It's the right choice for most
+# programs that control their own SQLite databases.
+#
+# That said, it's not ideal for all scenarios and in particular, generic
+# libraries built around `rusqlite` should probably not enable it, which
+# is why it is not a default feature -- it could become hard to disable.
+rusqlite = { version = "0.29.0", features = ["bundled", "modern_sqlite"] }
+log = "0.4.20"
+simple_logger = { version = "4.2.0", features = ["colored", "timestamps", "colors"] }
 
 [dev-dependencies]
 wasm-bindgen-test = "0.3.13"

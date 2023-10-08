@@ -1,5 +1,14 @@
+#[allow(unused_imports)]
+#[allow(unused_variables)]
+#[allow(dead_code)]
 mod utils;
+#[allow(unused_imports)]
+#[allow(unused_variables)]
+#[allow(dead_code)]
 mod core;
+#[allow(unused_imports)]
+#[allow(unused_variables)]
+#[allow(dead_code)]
 mod repository;
 
 use wasm_bindgen::prelude::*;
@@ -21,3 +30,5 @@ extern {
 pub fn greet() {
     alert("Hello, giom!");
 }
+
+

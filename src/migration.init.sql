@@ -1,3 +1,5 @@
+begin;
+
 create table if not exists categories
 (
     id          BLOB not null
@@ -183,3 +185,5 @@ create unique index if not exists location_observations_id_uindex
 
 create index if not exists location_observations_location_id_index
     on location_observations (location_id desc);
+
+commit;
