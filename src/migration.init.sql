@@ -166,20 +166,20 @@ create index if not exists locations_map_id_uindex
 create index if not exists locations_sight_id_uindex
     on locations (sight_id desc);
 
-create table if not exists observations
+create table if not exists location_observations
 (
     id          BLOB not null
-        constraint observations_pk
+        constraint location_observations_pk
             primary key,
     location_id BLOB not null
-        constraint observations_locations_id_fk
+        constraint location_observations_locations_id_fk
             references locations,
     image       BLOB not null
 )
     strict;
 
-create unique index if not exists observations_id_uindex
-    on observations (id desc);
+create unique index if not exists location_observations_id_uindex
+    on location_observations (id desc);
 
-create index if not exists observations_location_id_index
-    on observations (location_id desc);
+create index if not exists location_observations_location_id_index
+    on location_observations (location_id desc);
