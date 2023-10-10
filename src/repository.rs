@@ -2,7 +2,7 @@ use std::path::Path;
 use rusqlite::Connection;
 use log::{info, error};
 use crate::repository::Error::{ConnectionError, MigrationError, PathError};
-use crate::core;
+use rusqlite::types::FromSql;
 mod category;
 
 

@@ -5,9 +5,9 @@ pub struct Coordinates {
     pub y: f64,
 }
 
-pub struct Link<Target, URL> {
+pub struct Link<Id, Target, URL> {
     /// unique id
-    pub id: Uuid,
+    pub id: Id,
     /// displayed name
     pub name: String,
     /// a target is to which this link belongs
@@ -16,9 +16,9 @@ pub struct Link<Target, URL> {
     pub link: URL,
 }
 
-pub struct Category<Image> {
+pub struct Category<Id, Image> {
     /// unique id
-    pub id: Uuid,
+    pub id: Id,
     /// displayed name
     pub name: String,
     /// description
@@ -27,11 +27,11 @@ pub struct Category<Image> {
     pub icon: Image,
 }
 
-pub type CategoryLink<Image, URL> = Link<Category<Image>, URL>;
+pub type CategoryLink<Id, Image, URL> = Link<Id, Category<Id, Image>, URL>;
 
-pub struct Group<Image> {
+pub struct Group<Id, Image> {
     /// unique id
-    pub id: Uuid,
+    pub id: Id,
     /// displayed name
     pub name: String,
     /// description
@@ -40,11 +40,11 @@ pub struct Group<Image> {
     pub icon: Image,
 }
 
-pub type GroupLink<Image, URL> = Link<Group<Image>, URL>;
+pub type GroupLink<Id, Image, URL> = Link<Id, Group<Id, Image>, URL>;
 
-pub struct Map<Image> {
+pub struct Map<Id, Image> {
     /// unique id
-    pub id: Uuid,
+    pub id: Id,
     /// displayed name
     pub name: String,
     /// description
@@ -61,9 +61,9 @@ pub struct Map<Image> {
     pub image: Image,
 }
 
-pub struct Sight<Category> {
+pub struct Sight<Id, Category> {
     /// unique id
-    pub id: Uuid,
+    pub id: Id,
     /// Category
     pub category: Category,
 }
@@ -72,9 +72,9 @@ pub enum DependenceKind {
     NotAccessibleBeforeInteraction = 1
 }
 
-pub struct Dependence<Sight, Kind> {
+pub struct Dependence<Id, Sight, Kind> {
     /// unique id
-    pub id: Uuid,
+    pub id: Id,
     /// Sight
     pub sight: Sight,
     /// that depends on other Sight
@@ -83,9 +83,9 @@ pub struct Dependence<Sight, Kind> {
     pub kind: Kind,
 }
 
-pub struct Location<Map, Sight> {
+pub struct Location<Id, Map, Sight> {
     /// unique id
-    pub id: Uuid,
+    pub id: Id,
     /// Map to which this location belongs
     pub map: Map,
     /// Sight to which this location belongs
@@ -94,16 +94,14 @@ pub struct Location<Map, Sight> {
     pub position: Coordinates,
 }
 
-pub struct Observation<Image, Location> {
+pub struct Observation<Id, Image, Location> {
     /// unique id
-    pub id: Uuid,
+    pub id: Id,
     /// Location to which this Observation belongs
     pub location: Location,
     /// image of an observation in webp format
     pub image: Image,
 }
-
-use uuid::Uuid;
 
 
 
